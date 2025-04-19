@@ -1,0 +1,14 @@
+<div class="not-found-container">
+  <div class="not-found-content">
+    <img src="./not-found-icon.png" alt="404" (click)="startSmoke()" class="not-found-icon"/>
+    <img
+      src="./page.png"
+      class="page-smoke"
+      alt="404"
+      [ngStyle]="{ display: !smoke() ? 'none' : 'block' }"
+      (click)="navigate()"
+    />
+    <h2 class="error-title">This is not a page</h2>
+    <div class="smoke-cloud"></div>
+  </div>
+</div>
