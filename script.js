@@ -1,34 +1,46 @@
-// let consoleIsOpen = false;
-// const monolog = ["Привет", "Хорошо что ты нашел меня", "Я постараюсь помочь тебе", "Тебе не кажется что здесь слишком светло?"]
-// document.addEventListener('keydown', function(event) {
-//   if (!consoleIsOpen &&(
-//     (event.key === 'F12') || // F12
-//     (event.ctrlKey && event.shiftKey && (event.key === 'i' || event.key === 'j' || event.key === 'c')) || // Ctrl + Shift + I, J, C
-//     (event.metaKey && event.altKey && (event.key === 'i' || event.key === 'j' || event.key === 'c')) // Cmd + Option + I, J, C
-//   )) {
-//     consoleIsOpen = !consoleIsOpen;
-//     startMonolog()
+let consoleIsOpen = false;
+const monolog = [
+  "Привет",
+  "Хорошо что ты нашел меня",
+  "Я постараюсь помочь тебе",
+  "Тебе не кажется что здесь слишком светло?",
+];
+document.addEventListener("keydown", function (event) {
+  if (
+    !consoleIsOpen &&
+    (event.key === "F12" || // F12
+      (event.ctrlKey &&
+        event.shiftKey &&
+        (event.key === "i" || event.key === "j" || event.key === "c")) || // Ctrl + Shift + I, J, C
+      (event.metaKey &&
+        event.altKey &&
+        (event.key === "i" || event.key === "j" || event.key === "c"))) // Cmd + Option + I, J, C
+  ) {
+    consoleIsOpen = !consoleIsOpen;
+    startMonolog();
+  }
+});
 
-//   }
-// });
+window.addEventListener("resize", function (event) {
+  if (
+    !consoleIsOpen &&
+    (window.outerWidth !== window.outerWidthPrevious ||
+      window.innerWidth !== window.innerWidthPrevious)
+  ) {
+    consoleIsOpen = !consoleIsOpen;
+    startMonolog();
+  }
+  window.outerWidthPrevious = window.outerWidth;
+  window.innerWidthPrevious = window.innerWidth;
+});
 
-// window.addEventListener('resize', function(event) {
-//   if (!consoleIsOpen &&(window.outerWidth !== window.outerWidthPrevious || window.innerWidth !== window.innerWidthPrevious)) {
-//     consoleIsOpen = !consoleIsOpen;
-//     startMonolog()
-
-//   }
-//   window.outerWidthPrevious = window.outerWidth;
-//   window.innerWidthPrevious = window.innerWidth;
-// });
-
-// function startMonolog(){
-//   for (let i = 0; i < monolog.length; i++) {
-//     setTimeout(function() {
-//       console.log(monolog[i]);
-//     }, i * 2000);
-//   }
-// }
+function startMonolog() {
+  for (let i = 0; i < monolog.length; i++) {
+    setTimeout(function () {
+      console.log(monolog[i]);
+    }, i * 2000);
+  }
+}
 
 // function curry(operationFunction) {
 //   return function (firstNum) {
@@ -47,48 +59,20 @@
 //     };
 //   };
 
-  // function fn(num) {
-  //     numbers.push(num);
-  //     console.log(numbers)
-  //    return curry(args);
+// function fn(num) {
+//     numbers.push(num);
+//     console.log(numbers)
+//    return curry(args);
 
-  // }
+// }
 
-  /*  f.toString = function() {
+/*  f.toString = function() {
       return fn(numbers);
   } */
 
-  // return carriedResult;
+// return carriedResult;
 // }
 
 // function sum(...rest) {
 //   return rest.reduce((acc, curr) => (acc += curr));
 // }
-
-function curry(operation) {
-  function curriedOperation(arg) {
-    const args = [arg];
-
-    function next(nextArg) {
-      args.push(nextArg);
-      return next;
-    }
-
-    // next.valueOf = () => {
-    //   console.log(args);
-    //   return operation(...args)};
-    next.toString = () => {
-      return operation(...args)};
-
-    return next;
-  }
-
-  return curriedOperation;
-}
-
-const sum = (...nums) => nums.reduce((a, b) => a + b, 0);
-const a = curry(sum);
-
-console.log(a(3)(5)(7));        // 15
-console.log(+a(1)(2)(3)(4));    // 10
-

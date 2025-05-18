@@ -1,0 +1,23 @@
+<div class="node">
+  <div class="label" (click)="toggle()">
+    <p> {{node.label}}
+      @if(node.link){
+      <a [href]="node.link" (click)="clickOnLink($event)">нужная ссылка</a>
+      }
+    </p>
+    @if(node.children?.length){
+    <span class="arrow" [class.expanded]="node.expanded">▶</span>
+    }
+  </div>
+
+  @if(node.expanded && node.children?.length){
+  <div class="children">
+    @for(child of node.children; track $index){
+    <app-drop-down-item [node]="child">
+    </app-drop-down-item>
+    }
+
+  </div>
+  }
+
+</div>

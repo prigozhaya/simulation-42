@@ -1,0 +1,29 @@
+.node {
+  font-family: sans-serif;
+  margin-left: 16px;
+  color: #f0f0f0;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: background-color 0.2s;
+}
+
+.label:hover {
+  background-color: #f0f0f037;
+}
+
+.arrow {
+  display: inline-block;
+  width: 1em;
+  margin-left: 6px;
+  transition: transform 0.2s;
+}
+
+.arrow.expanded {
+  transform: rotate(90deg);
+}
