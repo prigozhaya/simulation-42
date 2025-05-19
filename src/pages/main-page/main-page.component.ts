@@ -86,10 +86,10 @@ export class MainPageComponent implements OnInit {
   }
 
   tree: TreeNode = {
-    label: this.isPageVisited() ? 'Опять ты?' : 'Здесь абсолютно ничего нет =(',
+    label: this.isPageVisited() ? 'Опять ты?' : 'AI OI AI раздел еще не завершен',
     children: [
       {
-        label: this.isPageVisited() ? 'Неужели тебе не понравился котик?' : 'Здесь тоже ничего нет',
+        label: this.isPageVisited() ? 'Неужели тебе не понравился котик?' : 'Здесь ничего нет',
         children: [
           {
             label: 'Здесь все еще ничего нет',
@@ -110,7 +110,7 @@ export class MainPageComponent implements OnInit {
                             label: 'Неужели не повелся? Неплохо неплохо',
                             children: [
                               {
-                                label: 'Хорошо, 4то ты думаешь насчет т0го 4тобы пойти в НИКУДА подальше?',
+                                label: 'Хорошо, 4то ты думаешь насчет т0го 4тобы пойти в никуда подальше?',
                                 children: [],
                               },
                             ],

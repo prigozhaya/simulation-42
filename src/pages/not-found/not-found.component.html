@@ -1,14 +1,71 @@
-<div class="not-found-container">
-  <div class="not-found-content">
-    <img src="./not-found-icon.png" alt="404" (click)="startSmoke()" class="not-found-icon"/>
-    <img
-      src="./page.png"
-      class="page-smoke"
-      alt="404"
-      [ngStyle]="{ display: !smoke() ? 'none' : 'block' }"
-      (click)="navigate()"
-    />
-    <h2 class="error-title">This is not a page</h2>
-    <div class="smoke-cloud"></div>
+<div class="glitch-wrapper" *ngIf="!consoleActive">
+  <div class="glitch-text" data-text="Ошибка 404: Сознание не найдено">
+    Ошибка 404: Доступ к странице ограничен
   </div>
+  <div class="console-lines">
+    @for(line of initConsoleLines; track $index){
+
+    <div class="console-line">{{ line }}</div>
+    }
+    <div class="console-cursor">▍</div>
+  </div>
+  @if(initConsoleLines.length > 10 ){
+  <div>
+    <button class="glitch-button" (click)="activateConsole()">
+      Восстановить доступ
+    </button>
+  </div>
+  }
 </div>
+
+<div class="console-screen" *ngIf="consoleActive">
+  <div class="console-container">
+    <div class="console-header">
+      <div class="console-title">System Console</div>
+      <div class="console-controls">
+        <button (click)="toggleCursor()" [class.active]="cursorRunning"
+          [ngClass]="{'disabled': this.placeholders.flat().length<3}">
+          {{ cursorRunning ? "Stop" : "Start" }} Cursor
+        </button>
+        <button (click)="resetGame()">Reset</button>
+      </div>
+    </div>
+
+    <div class="console-body">
+      <div class="console-lines" cdkDropList (cdkDropListDropped)="drop($event)">
+        @for(line of consoleLines; track $index){
+        <div class="console-line" [class.active]="cursorPosition === $index" [class.executed]="$index < cursorPosition">
+          <span class="line-number">{{ $index + 1 }}</span>
+          <div class="line-content">
+
+            @if(line.isPlaceholder){
+            <div class="placeholder" cdkDropList [id]="'placeholder-' + line.placeholderId"
+              [cdkDropListData]="placeholders[line.placeholderId!]" [cdkDropListConnectedTo]="connectedDropLists"
+              (cdkDropListDropped)="drop($event)">
+              <div class="icon-content" cdkDrag>{{consoleLines[$index].placeholderFilled}} </div>
+            </div>
+            } @else { {{ line.text }}}
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="console-footer">
+      <div class="status-bar">
+        <span>Access Level: {{ accessLevel }}</span>
+        <span *ngIf="panelOpened" class="success-message">Panel Opened!</span>
+      </div>
+
+      <!-- <div class="icons-container" > -->
+      <div class="icons-container" cdkDropList [cdkDropListData]="availableIcons"
+        [cdkDropListConnectedTo]="connectedDropLists" (cdkDropListDropped)="drop($event)">
+        @for(icon of availableIcons; track $index){
+        <div cdkDrag class="icon-item">
+          <div class="icon-content">{{ icon }}</div>
+        </div>
+        }
+      </div>
+      <!-- </div> -->
+    </div>
+  </div>
