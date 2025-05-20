@@ -1,7 +1,7 @@
 .glitch-wrapper {
   font-family: 'Orbitron', monospace;
   background-color: #000;
-  color: #c02be2;
+  color: #8a2be2;
   padding: 4rem;
   text-align: center;
   min-height: 100vh;
@@ -14,43 +14,12 @@
 .glitch-text {
   font-size: 2rem;
   position: relative;
-  color: #c02be2;
-}
-
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  width: 100%;
-  color: #c02be2;
-  background: transparent;
-  clip: rect(0, 0, 0, 0);
-}
-
-.glitch-text::before {
-  animation: glitchTop 1s infinite linear;
-  color: #ff00cc;
-  z-index: -1;
-}
-
-.glitch-text::after {
-  animation: glitchBottom 1s infinite linear;
-  color: #00ffff;
-  z-index: -2;
-}
-
-
-.glitch-subtext {
-  font-size: 1rem;
-  margin: 2rem 0;
-  color: #cccccc;
-  font-family: 'Courier New', monospace;
+  color: #8a2be2;
 }
 
 .glitch-button {
   padding: 1rem 2rem;
-  background: #c02be2;
+  background: #8a2be2;
   border: none;
   color: #000;
   font-size: 1rem;
@@ -64,15 +33,15 @@
 }
 
 .glitch-button:hover {
-  background: #00ffcc;
+  background: #6922ac
 }
 
 @keyframes neon-1 {
     from {
-        text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(191, 226, 255, 0.52), 0 0 21px rgba(191, 226, 255, 0.92), 0 0 34px rgba(191, 226, 255, 0.78), 0 0 54px rgba(191, 226, 255, 0.92);
+        box-shadow: 0 0 1px rgba(230, 144, 244, 0.805), 0 0 1px rgba(230, 144, 244, 0.34), 0 0 3px rgba(230, 144, 244, 0.52), 0 0 10px rgba(230, 144, 244, 0.92), 0 0 1px rgba(230, 144, 244, 0.78), 0 0 12px rgba(230, 144, 244, 0.92);
     }
     to {
-        text-shadow: 0 0 6px rgba(202, 228, 225, 0.98), 0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(191, 226, 255, 0.58), 0 0 22px rgba(191, 226, 255, 0.84), 0 0 38px rgba(191, 226, 255, 0.88), 0 0 60px #FFF;
+      box-shadow: 0 0 1px rgba(230, 144, 244, 0.98), 0 0 1px rgba(230, 144, 244, 0.42), 0 0 3px rgba(230, 144, 244, 0.58), 0 0 10px rgba(230, 144, 244, 0.84), 0 0 1px rgba(230, 144, 244, 0.88), 0 0 12px #FFF;
     }
 }
 
@@ -82,6 +51,10 @@
   font-family: 'Courier New', monospace;
   padding: 2rem;
   min-height: 100vh;
+}
+
+.success-accesess{
+  color: #50fa7b;
 }
 
 .console-line {

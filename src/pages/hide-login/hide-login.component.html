@@ -1,0 +1,52 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2 class="login-title">Hide👁‍🗨Login</h2>
+    <div class="help-container">
+
+      @if(attempt>0){
+      <p class="attempt">{{attempt}}</p>
+      } @else {
+      <button mat-icon-button class="help-button" (click)="openHelpDialog()" aria-label="Help">
+        <mat-icon>help_outline</mat-icon>
+      </button>
+      }
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="form-field">
+        <mat-form-field appearance="outline" class="mat-form-field">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" placeholder="Enter your username">
+          <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+            Username is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field appearance="outline" class="mat-form-field">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" class="form-input"
+            placeholder="Enter your password">
+          <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Password is required
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+            Password must be at least 6 characters
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" class="login-button">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

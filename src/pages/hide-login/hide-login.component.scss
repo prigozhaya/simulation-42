@@ -1,0 +1,141 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #121212;
+}
+.mat-form-field{
+  width: 100%;
+  // border: solid 1px #8a2be2;
+}
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.login-title {
+  color: #8a2be2; // Purple accent color
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-bottom: 1.5rem;
+
+  .mat-form-field {
+    width: 100%;
+  }
+}
+
+.error-message {
+  color: #cf6679; // Error color in dark theme
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+}
+
+.login-button {
+  margin-top: 1.5rem;
+  height: 48px;
+  background-color: #8a2be2 !important; // Purple accent color
+  color: #000000 !important;
+  border-radius: 5px !important;
+}
+
+// Override Angular Material styles for dark theme
+::ng-deep {
+  // Input outline color
+  .mat-form-field-outline {
+    color: #8a2be2;
+  }
+
+  // Label color
+  .mat-form-field-label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  // Input text color
+  .mat-input-element {
+    color: white;
+  }
+
+  // When the input is focused
+  .mat-focused .mat-form-field-outline {
+    color: #8a2be2 !important;
+  }
+
+  // Input border thickness
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #8a2be2;
+    opacity: 0.7;
+  }
+
+  // Focused input
+  .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #d0a5ff !important;
+  }
+
+  // Hover state
+  .mat-form-field:hover .mat-form-field-outline {
+    opacity: 1;
+  }
+
+  // Error state
+  .mat-form-field.mat-form-field-invalid .mat-form-field-outline {
+    color: #cf6679 !important;
+    opacity: 1;
+  }
+
+  // Error message
+  .mat-error {
+    color: #cf6679;
+  }
+
+  // Placeholder color
+  .mat-form-field-appearance-outline .mat-form-field-label {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  // Focused placeholder
+  .mat-focused .mat-form-field-label {
+    color: #8a2be2 !important;
+  }
+}
+
+
+.help-button {
+  color: #bb86fc;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  .mat-icon {
+    font-size: 24px;
+    height: 24px;
+    width: 24px;
+  }
+}
+
+.attempt{
+  color: #bb86fc;
+  font-size: 22px;
+  text-align: center;
+}
+
+.help-container{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}

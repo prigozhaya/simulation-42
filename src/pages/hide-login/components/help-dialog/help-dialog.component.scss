@@ -1,0 +1,60 @@
+.help-dialog-container {
+  background-color: #1e1e1e;
+  color: white;
+  padding: 10px;
+
+  h2 {
+    color: #bb86fc;
+    margin-bottom: 20px;
+  }
+}
+
+.color-rectangles {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.color-rectangle {
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  &.first {
+    background-color: rgb(212,136,123);
+  }
+
+  &.second {
+    background-color: #207281;
+  }
+
+  &.third {
+    background-color: rgb(36, 109, 177);
+  }
+}
+
+.help-text {
+  margin-top: 20px;
+  font-size: 14px;
+
+  p {
+    margin: 8px 0;
+  }
+
+  strong {
+    color: #bb86fc;
+  }
+}
+
+::ng-deep .mat-dialog-container {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}

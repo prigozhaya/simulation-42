@@ -1,0 +1,49 @@
+<div class="captcha-dialog-container">
+  <h2 mat-dialog-title>Я должен быть уверен, что ты человек</h2>
+
+  <mat-dialog-content>
+    <!-- Math CAPTCHA -->
+    <div *ngIf="captchaType === 'math'" class="math-captcha">
+      <p class="captcha-instruction">Solve this math problem:</p>
+
+      <div class="math-problem">
+        <span class="math-number">{{ mathProblem.num1 }}</span>
+        <span class="math-operator">{{ mathProblem.operator }}</span>
+        <span class="math-number">{{ mathProblem.num2 }}</span>
+        <span class="math-operator">=</span>
+        <span class="math-question">?</span>
+      </div>
+
+      <form [formGroup]="captchaForm" class="captcha-form">
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Твой ответ</mat-label>
+          <input matInput type="number" formControlName="answer" placeholder="Enter your answer">
+        </mat-form-field>
+      </form>
+    </div>
+
+    <!-- Image CAPTCHA -->
+    <div *ngIf="captchaType === 'image'" class="image-captcha">
+      <p class="captcha-instruction">{{ captchaInstruction }}</p>
+
+      <div class="image-options">
+        <div *ngFor="let image of imageOptions" class="image-option" [class.selected]="image.selected"
+          (click)="selectImage(image.id)">
+          <div class="shape-container" [ngClass]="image.name.toLowerCase()">
+            <div class="shape"></div>
+          </div>
+          <span class="shape-name">{{ image.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      Без ответа не пущу, мерзкая машина!
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="verifyCaptcha()">Verify</button>
+  </mat-dialog-actions>
+</div>

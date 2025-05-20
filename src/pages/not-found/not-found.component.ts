@@ -20,13 +20,6 @@ interface ConsoleLine {
   action?: () => void
 }
 
-interface Icon {
-  id: string
-  name: string
-  icon: string
-  description: string
-}
-
 
 @Component({
   selector: 'app-not-found',
@@ -151,11 +144,6 @@ export class NotFoundComponent implements OnInit {
         text: "access level > 7",
         isPlaceholder: false,
         isExecutable: true,
-        action: () => {
-          if (this.accessLevel > 7) {
-            this.panelOpened = true
-          }
-        },
       },
       {
         text: "access level + 2;",
@@ -172,7 +160,7 @@ export class NotFoundComponent implements OnInit {
         placeholderId: 2,
       },
       {
-        text: "open panel.",
+        text: "> open panel",
         isPlaceholder: false,
         isExecutable: true,
         action: () => {
@@ -182,6 +170,10 @@ export class NotFoundComponent implements OnInit {
             if (this.cursorInterval) {
               this.cursorInterval.unsubscribe()
             }
+            setTimeout(() => {
+              // this.router.navigate(['hide-login']);
+              this.router.navigate(['/hideLogin']);
+            }, 3000)
           }
         },
       },
@@ -260,8 +252,6 @@ export class NotFoundComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else if (toPlaceholderIndex !== -1) {
       // Перемещение В плейсхолдер
-      console.log(this.consoleLines[consoleLineToPlaceholderIndex].placeholderFilled)
-      console.log(this.consoleLines[consoleLineFromPlaceholderIndex]?.placeholderFilled)
 
       if (!this.consoleLines[consoleLineToPlaceholderIndex].placeholderFilled && this.consoleLines[consoleLineFromPlaceholderIndex]?.placeholderFilled) {
         this.consoleLines[consoleLineFromPlaceholderIndex].placeholderFilled = undefined;

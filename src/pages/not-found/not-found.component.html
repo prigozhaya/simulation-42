@@ -1,4 +1,5 @@
-<div class="glitch-wrapper" *ngIf="!consoleActive">
+@if(!consoleActive){
+<div class="glitch-wrapper">
   <div class="glitch-text" data-text="Ошибка 404: Сознание не найдено">
     <h3>Ошибка 404: Доступ к странице ограничен</h3>
   </div>
@@ -17,14 +18,14 @@
   </div>
   }
 </div>
-
-<div class="console-screen" *ngIf="consoleActive">
+} @if(consoleActive){
+<div class="console-screen">
   <div class="console-container">
     <div class="console-header">
       <div class="console-title">System Console</div>
       <div class="console-controls">
         <button (click)="toggleCursor()" [class.active]="cursorRunning"
-          [ngClass]="{'disabled': this.placeholders.flat().length<3}">
+          [ngClass]="{ disabled: placeholders.flat().length < 3 }">
           {{ cursorRunning ? "Stop" : "Start" }} Cursor
         </button>
         <button (click)="resetGame()">Reset</button>
@@ -37,12 +38,13 @@
         <div class="console-line" [class.active]="cursorPosition === $index" [class.executed]="$index < cursorPosition">
           <span class="line-number">{{ $index + 1 }}</span>
           <div class="line-content">
-
             @if(line.isPlaceholder){
             <div class="placeholder" cdkDropList [id]="'placeholder-' + line.placeholderId"
               [cdkDropListData]="placeholders[line.placeholderId!]" [cdkDropListConnectedTo]="connectedDropLists"
               (cdkDropListDropped)="drop($event)">
-              <div class="icon-content" cdkDrag>{{consoleLines[$index].placeholderFilled}} </div>
+              <div class="icon-content" cdkDrag>
+                {{ consoleLines[$index].placeholderFilled }}
+              </div>
             </div>
             } @else { {{ line.text }}}
           </div>
@@ -53,11 +55,12 @@
 
     <div class="console-footer">
       <div class="status-bar">
-        <span>Access Level: {{ accessLevel }}</span>
-        <span *ngIf="panelOpened" class="success-message">Panel Opened!</span>
+        <span [ngClass]="{ 'success-accesess': accessLevel > 7 }">Access Level: {{ accessLevel }}</span>
+        @if(panelOpened){
+        <span class="success-message">Panel Opened!</span>
+        }
       </div>
 
-      <!-- <div class="icons-container" > -->
       <div class="icons-container" cdkDropList [cdkDropListData]="availableIcons"
         [cdkDropListConnectedTo]="connectedDropLists" (cdkDropListDropped)="drop($event)">
         @for(icon of availableIcons; track $index){
@@ -66,6 +69,7 @@
         </div>
         }
       </div>
-      <!-- </div> -->
     </div>
   </div>
+</div>
+}

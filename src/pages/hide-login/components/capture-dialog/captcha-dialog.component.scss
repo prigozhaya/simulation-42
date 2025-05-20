@@ -1,0 +1,191 @@
+.captcha-dialog-container {
+  background-color: #1e1e1e;
+  color: white;
+
+  h2 {
+    color: #bb86fc;
+    margin-bottom: 20px;
+  }
+}
+
+.captcha-instruction {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+// Math CAPTCHA styles
+.math-captcha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.math-problem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  font-size: 24px;
+  background-color: #2d2d2d;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.math-number {
+  font-weight: bold;
+  color: #bb86fc;
+  padding: 0 5px;
+}
+
+.math-operator {
+  padding: 0 10px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.math-question {
+  color: #03dac6;
+  font-weight: bold;
+  font-size: 28px;
+  padding-left: 5px;
+}
+
+.captcha-form {
+  width: 100%;
+  margin-top: 10px;
+}
+
+// Image CAPTCHA styles
+.image-captcha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.image-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #2d2d2d;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #3d3d3d;
+  }
+
+  &.selected {
+    background-color: rgba(187, 134, 252, 0.2);
+    border: 2px solid #bb86fc;
+  }
+}
+
+.shape-container {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+
+  &.circle .shape {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #bb86fc;
+  }
+
+  &.square .shape {
+    width: 60px;
+    height: 60px;
+    background-color: #03dac6;
+  }
+
+  &.triangle .shape {
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid #cf6679;
+  }
+
+  &.star .shape {
+    position: relative;
+    width: 0;
+    height: 0;
+    margin: 25px 0;
+    border-right: 20px solid transparent;
+    border-bottom: 14px solid #70e000;
+    border-left: 20px solid transparent;
+    transform: rotate(35deg);
+
+    &:before {
+      content: '';
+      position: absolute;
+      height: 0;
+      width: 0;
+      top: -9px;
+      left: -13px;
+      border-bottom: 16px solid #70e000;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      transform: rotate(-35deg);
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -21px;
+      width: 0;
+      height: 0;
+      border-right: 20px solid transparent;
+      border-bottom: 14px solid #70e000;
+      border-left: 20px solid transparent;
+      transform: rotate(-70deg);
+    }
+  }
+}
+
+.shape-name {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.error-message {
+  color: #cf6679;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+::ng-deep {
+  .mat-dialog-container {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .mat-form-field-outline {
+    color: #bb86fc;
+  }
+
+  .mat-form-field-label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .mat-input-element {
+    color: white;
+  }
+}
