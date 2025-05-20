@@ -1,7 +1,7 @@
 .glitch-wrapper {
   font-family: 'Orbitron', monospace;
   background-color: #000;
-  color: #00ffcc;
+  color: #c02be2;
   padding: 4rem;
   text-align: center;
   min-height: 100vh;
@@ -14,7 +14,7 @@
 .glitch-text {
   font-size: 2rem;
   position: relative;
-  color: #00ffcc;
+  color: #c02be2;
 }
 
 .glitch-text::before,
@@ -23,7 +23,7 @@
   position: absolute;
   left: 0;
   width: 100%;
-  color: #ff00cc;
+  color: #c02be2;
   background: transparent;
   clip: rect(0, 0, 0, 0);
 }
@@ -48,18 +48,9 @@
   font-family: 'Courier New', monospace;
 }
 
-.blink {
-  animation: blink 1s steps(2, start) infinite;
-  color: #00ffcc;
-}
-
-@keyframes blink {
-  to { visibility: hidden; }
-}
-
 .glitch-button {
   padding: 1rem 2rem;
-  background: #00ffaa;
+  background: #c02be2;
   border: none;
   color: #000;
   font-size: 1rem;
@@ -68,10 +59,21 @@
   transition: background 0.3s ease;
   font-weight: bold;
   text-transform: uppercase;
+      color: #FFF;
+    animation: neon-1 .1s ease-in-out infinite alternate;
 }
 
 .glitch-button:hover {
   background: #00ffcc;
+}
+
+@keyframes neon-1 {
+    from {
+        text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(191, 226, 255, 0.52), 0 0 21px rgba(191, 226, 255, 0.92), 0 0 34px rgba(191, 226, 255, 0.78), 0 0 54px rgba(191, 226, 255, 0.92);
+    }
+    to {
+        text-shadow: 0 0 6px rgba(202, 228, 225, 0.98), 0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(191, 226, 255, 0.58), 0 0 22px rgba(191, 226, 255, 0.84), 0 0 38px rgba(191, 226, 255, 0.88), 0 0 60px #FFF;
+    }
 }
 
 .console-screen {
