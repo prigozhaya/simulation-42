@@ -1,0 +1,25 @@
+<div class="documents-dialog-container">
+  <h2 mat-dialog-title>
+    <mat-icon>folder_open</mat-icon>
+    <span>Documents</span>
+  </h2>
+
+  <mat-dialog-content>
+    <div class="documents-list">
+      <div *ngFor="let document of documents" class="document-item" (click)="openDocument(document)" matRipple>
+        <mat-icon class="document-icon">{{ document.icon }}</mat-icon>
+        <div class="document-details">
+          <h3 class="document-name">{{ document.name }}</h3>
+          <p class="document-meta">
+            <span class="document-date">{{ document.date }}</span>
+            <span class="document-size">{{ document.size }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="closeDialog()" class="mat-button">Close</button>
+  </mat-dialog-actions>
+</div>

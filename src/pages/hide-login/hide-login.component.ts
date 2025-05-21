@@ -7,6 +7,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { CaptchaDialogComponent } from './components/capture-dialog/captcha-dialog.component';
 import { HelpDialogComponent } from './components/help-dialog/help-dialog.component';
@@ -30,6 +31,11 @@ export class HideLoginComponent {
   private fb = inject(FormBuilder);
   private dialog = inject(MatDialog);
   private router = inject(Router);
+  private titleService = inject(Title);
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Hide login');
+  }
 
   loginForm: FormGroup = this.fb.group({
     username: ["", [Validators.required]],
@@ -75,7 +81,8 @@ export class HideLoginComponent {
         // alert("Login successful!")
         this.playSucsessSound()
         setTimeout(() => {
-          this.router.navigate(['/mySpace']);
+          window.open(window.location.origin + '/mySpace', '_blank');
+
         }, 3000)
         // Here you would typically navigate to another page or set authentication state
       } else {

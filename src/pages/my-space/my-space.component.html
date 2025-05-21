@@ -1,1 +1,12 @@
-<p>my-space works!</p>
+<div class="my-space-container">
+  <header class="my-space-header">
+    <h1>My Space</h1>
+  </header>
+
+  <main class="my-space-content">
+    <div class="folder-container" [ngClass]="{'disabled-folder': !access}" (click)="openDocumentsDialog()">
+      <mat-icon class="folder-icon">folder</mat-icon>
+      <p class="folder-label">Documents</p>
+    </div>
+  </main>
+</div>

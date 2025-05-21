@@ -45,7 +45,7 @@ html, body {
 .mat-form-field {
   &.mat-focused {
     .mat-form-field-ripple {
-      background-color: #8a2be2;
+      background-color: #bb86fc;
     }
   }
 }
@@ -76,3 +76,21 @@ html {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-button {
+  margin-top: 1.5rem;
+  height: 48px;
+  background-color: #8a2be2 !important; // Purple accent color
+  color: #ffffff !important;
+  border-radius: 5px !important;
+}
+
+.mat-button-secondary {
+  margin-top: 1.5rem;
+  height: 48px;
+  background-color: #8e31e516 !important; // Purple accent color
+  color: #d7d7d7 !important;
+  border-radius: 5px !important;
+  border: solid 1px #8a2be2 !important;
+}

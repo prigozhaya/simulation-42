@@ -19,7 +19,7 @@
 }
 
 .login-title {
-  color: #8a2be2; // Purple accent color
+  color: #bb86fc;// Purple accent color
   text-align: center;
   margin-bottom: 2rem;
   font-size: 2rem;
@@ -44,19 +44,13 @@
   font-size: 0.875rem;
 }
 
-.login-button {
-  margin-top: 1.5rem;
-  height: 48px;
-  background-color: #8a2be2 !important; // Purple accent color
-  color: #000000 !important;
-  border-radius: 5px !important;
-}
+
 
 // Override Angular Material styles for dark theme
 ::ng-deep {
   // Input outline color
   .mat-form-field-outline {
-    color: #8a2be2;
+    color: #bb86fc;
   }
 
   // Label color
@@ -76,7 +70,7 @@
 
   // Input border thickness
   .mat-form-field-appearance-outline .mat-form-field-outline {
-    color: #8a2be2;
+    color: #bb86fc;
     opacity: 0.7;
   }
 

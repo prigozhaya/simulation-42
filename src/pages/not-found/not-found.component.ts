@@ -5,10 +5,11 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
-import { interval, Subject, type Subscription } from "rxjs";
-import { takeUntil } from "rxjs/operators";
+import { fromEvent, interval, Subject, type Subscription } from "rxjs";
+import { filter, take, takeUntil } from "rxjs/operators";
 import { VisitPageService } from '../../app/services/visit-page.service';
 
 interface ConsoleLine {
@@ -29,7 +30,7 @@ interface ConsoleLine {
 })
 
 
-export class NotFoundComponent implements OnInit {
+export class NotFoundComponent {
   private router = inject(Router);
   private visitflagService = inject(VisitPageService);
 
@@ -37,16 +38,22 @@ export class NotFoundComponent implements OnInit {
   public consoleActive = false;
   public initConsoleLines: string[] = [];
 
-  // public navigate() {
-  //   this.router.navigate(['main']);
-  // }
-  ngOnInit() {
-    this.initConsole()
-    this.visitflagService.setFlag("notfound", true);
+
+  constructor() {
+    fromEvent<KeyboardEvent>(document, 'keydown')
+      .pipe(
+        filter(event => event.key === 'Enter'),
+        take(1),
+        takeUntilDestroyed()
+      )
+      .subscribe(() => {
+        this.playConsoleSound()
+        this.initConsole()
+        this.visitflagService.setFlag("notfound", true);
+      });
   }
 
   public initConsole() {
-    this.playConsoleSound()
 
     const fullLog = [
       '> Подключение к ядру ... ',
@@ -172,6 +179,7 @@ export class NotFoundComponent implements OnInit {
             if (this.cursorInterval) {
               this.cursorInterval.unsubscribe()
             }
+            this.playSuccessSound()
             setTimeout(() => {
               this.router.navigate(['/hideLogin']);
             }, 3000)
@@ -197,6 +205,11 @@ export class NotFoundComponent implements OnInit {
 
   playConsoleLineSound(): void {
     const audio = new Audio("/signal.mp3")
+    audio.play().catch((error) => console.error("Error playing sound:", error))
+  }
+
+  playSuccessSound(): void {
+    const audio = new Audio("/success.mp3")
     audio.play().catch((error) => console.error("Error playing sound:", error))
   }
 
