@@ -2,6 +2,7 @@ import { Route } from '@angular/router';
 import { DefaultPageComponent } from '../pages/default-page/default-page.component';
 import { HideLoginComponent } from '../pages/hide-login/hide-login.component';
 import { MainPageComponent } from '../pages/main-page/main-page.component';
+import { MySpaceComponent } from '../pages/my-space/my-space.component';
 import { NotFoundComponent } from '../pages/not-found/not-found.component';
 
 export const routes: Route[] = [
@@ -21,6 +22,10 @@ export const routes: Route[] = [
   {
     path: 'hideLogin',
     component: HideLoginComponent,
+  },
+  {
+    path: 'mySpace',
+    component: MySpaceComponent,
   },
   {
     path: '**',

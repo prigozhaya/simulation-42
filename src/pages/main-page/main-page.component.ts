@@ -1,5 +1,5 @@
 import { CommonModule, ViewportScroller } from '@angular/common';
-import { Component, computed, ElementRef, HostListener, inject, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, computed, ElementRef, HostListener, inject, QueryList, ViewChildren } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { VisitPageService } from '../../app/services/visit-page.service';
 import {
@@ -15,7 +15,7 @@ import {
   styleUrl: './main-page.component.scss',
   // host: { class: 'background' }
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent {
 
   currentYear: number = new Date().getFullYear();
   isScrolled: boolean = false;
@@ -77,13 +77,12 @@ export class MainPageComponent implements OnInit {
   scrollSmooth(elementId: string): void {
     this.viewportScroller.scrollToAnchor(elementId);
   }
-  ngOnInit(): void {
-    console.log(this.isNotFoundPageVisited())
-    if (this.isNotFoundPageVisited()) {
-      this.router.navigate(['/mаin']);
-    }
+  // ngOnInit(): void {
+  //   if (this.isNotFoundPageVisited()) {
+  //     this.router.navigate(['/mаin']);
+  //   }
 
-  }
+  // }
 
   tree: TreeNode = {
     label: this.isPageVisited() ? 'Опять ты?' : 'AI OI AI раздел еще не завершен',

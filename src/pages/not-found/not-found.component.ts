@@ -37,15 +37,17 @@ export class NotFoundComponent implements OnInit {
   public consoleActive = false;
   public initConsoleLines: string[] = [];
 
-  public navigate() {
-    this.router.navigate(['main']);
-  }
+  // public navigate() {
+  //   this.router.navigate(['main']);
+  // }
   ngOnInit() {
     this.initConsole()
     this.visitflagService.setFlag("notfound", true);
   }
 
   public initConsole() {
+    this.playConsoleSound()
+
     const fullLog = [
       '> Подключение к ядру ... ',
       '> Инициализация интерфейса ...',
@@ -67,7 +69,7 @@ export class NotFoundComponent implements OnInit {
       } else {
         clearInterval(interval);
       }
-    }, 400);
+    }, 900);
   }
 
   public activateConsole() {
@@ -171,7 +173,6 @@ export class NotFoundComponent implements OnInit {
               this.cursorInterval.unsubscribe()
             }
             setTimeout(() => {
-              // this.router.navigate(['hide-login']);
               this.router.navigate(['/hideLogin']);
             }, 3000)
           }
@@ -187,6 +188,16 @@ export class NotFoundComponent implements OnInit {
     this.cursorRunning = false
     this.accessLevel = 1
     this.panelOpened = false
+  }
+
+  playConsoleSound(): void {
+    const audio = new Audio("/pentium3.mp3")
+    audio.play().catch((error) => console.error("Error playing sound:", error))
+  }
+
+  playConsoleLineSound(): void {
+    const audio = new Audio("/signal.mp3")
+    audio.play().catch((error) => console.error("Error playing sound:", error))
   }
 
   toggleCursor() {
@@ -207,6 +218,7 @@ export class NotFoundComponent implements OnInit {
   }
 
   moveCursor() {
+    this.playConsoleLineSound()
     if (this.cursorPosition >= this.consoleLines.length) {
       this.cursorPosition = 0
       return

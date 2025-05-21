@@ -7,6 +7,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
 import { CaptchaDialogComponent } from './components/capture-dialog/captcha-dialog.component';
 import { HelpDialogComponent } from './components/help-dialog/help-dialog.component';
 
@@ -28,6 +29,7 @@ import { HelpDialogComponent } from './components/help-dialog/help-dialog.compon
 export class HideLoginComponent {
   private fb = inject(FormBuilder);
   private dialog = inject(MatDialog);
+  private router = inject(Router);
 
   loginForm: FormGroup = this.fb.group({
     username: ["", [Validators.required]],
@@ -72,6 +74,9 @@ export class HideLoginComponent {
         this.errorMessage = ""
         // alert("Login successful!")
         this.playSucsessSound()
+        setTimeout(() => {
+          this.router.navigate(['/mySpace']);
+        }, 3000)
         // Here you would typically navigate to another page or set authentication state
       } else {
         this.errorMessage = "Invalid username or password"
