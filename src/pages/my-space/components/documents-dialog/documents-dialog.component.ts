@@ -56,7 +56,7 @@ export class DocumentsDialogComponent {
     },
     {
       id: 4,
-      name: "Исследование █████████ ███.pdf",
+      name: "Иcследование █████████ ███.pdf",
       date: "/",
       size: "0.9 MB",
       icon: "description",
